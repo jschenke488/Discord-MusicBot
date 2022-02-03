@@ -59,7 +59,7 @@ const command = new SlashCommand()
       .setColor(client.config.embedColor)
       .setDescription(`Using **Watch Together** you can watch YouTube with your friends in a Voice Channel. Click *Join Watch Together* to join in!
       
-      __**[Join YouTube Together](<https://discord.gg/${invite.code}>)**__
+      __**[Join Watch Together](<https://discord.gg/${invite.code}>)**__
       
       ⚠ **Note:** This only works in Desktop`);
     return interaction.reply({ embeds: [Embed] });
