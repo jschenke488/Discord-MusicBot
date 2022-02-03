@@ -45,9 +45,10 @@ const command = new SlashCommand()
     }).then(async (res) => {
       if (res.status !== 200) {
         console.log(res.status);
-        return interaction.reply(
-          "There was an error creating the invite. Please try again later."
-        );
+        return interaction.reply({
+          content: "There was an error creating the invite. Please try again later.",
+          ephemeral: true
+        });
       }
       const invite = await res.json();
       const Embed = new MessageEmbed()
