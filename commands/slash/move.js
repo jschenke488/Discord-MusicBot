@@ -52,12 +52,18 @@ const command = new SlashCommand()
 
     let trackNum = Number(track) - 1;
     if (trackNum < 1 || trackNum > player.queue.length - 1) {
-      return interaction.reply(":x: | **Invalid track number**");
+      const invalidEmbed = new MessageEmbed()
+        .setColor(client.config.embedColor)
+        .setDescription(":x: | **Invalid track number**");
+      return interaction.reply({ embeds: [invalidEmbed], ephemeral: true });
     }
 
     let dest = Number(position) - 1;
     if (dest < 1 || dest > player.queue.length - 1) {
-      return interaction.reply(":x: | **Invalid position number**");
+      const invalidEmbed = new MessageEmbed()
+        .setColor(client.config.embedColor)
+        .setDescription(":x: | **Invalid position number**");
+      return interaction.reply({ embeds: [invalidEmbed], ephemeral: true });
     }
 
     const thing = player.queue[trackNum];
