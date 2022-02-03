@@ -3,7 +3,7 @@ module.exports = {
   clientId: process.env.clientId || "", //ID of the bot
   clientSecret: process.env.clientSecret || "", //Client Secret of the bot
   port: 3000, //Port of the API and Dashboard
-  scopes: ["identify", "guilds", "applications.commands"], //Discord OAuth2 Scopes
+  scopes: ["bot", "identify", "guilds", "applications.commands"], //Discord OAuth2 Scopes
   serverDeafen: true, //If you want bot to stay deafened
   defaultVolume: 100, //Sets the default volume of the bot, You can change this number anywhere from 1 to 100
   supportServer: "https://discord.gg/sbySMS7m3v", //Support Server Link
@@ -31,6 +31,7 @@ module.exports = {
       {
         name: "Music", //Status Text
         type: "LISTENING", // PLAYING, WATCHING, LISTENING, STREAMING
+        //url: "https://twitch.tv/example" //- Optional | YouTube or Twitch stream URL is required for STREAMING type
       },
     ],
   },
