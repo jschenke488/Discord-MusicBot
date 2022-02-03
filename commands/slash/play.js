@@ -45,6 +45,7 @@ const command = new SlashCommand()
       return interaction
         .editReply({
           embeds: [client.ErrorEmbed("There was an error while searching")],
+          ephemeral: true
         })
         .catch(this.warn);
     }
@@ -54,6 +55,7 @@ const command = new SlashCommand()
       return interaction
         .editReply({
           embeds: [client.ErrorEmbed("No results were found")],
+          ephemeral: true
         })
         .catch(this.warn);
     }
