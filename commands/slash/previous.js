@@ -43,6 +43,7 @@ const command = new SlashCommand()
             .setColor(client.config.embedColor)
             .setDescription("❌ | **There is no previous song in the queue.**"),
         ],
+        ephemeral: true
       });
 
     const currentSong = player.queue.current;
