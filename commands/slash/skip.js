@@ -10,6 +10,7 @@ const command = new SlashCommand()
     if (!player)
       return interaction.reply({
         embeds: [client.ErrorEmbed("There's nothing to skipped!")],
+        ephemeral: true
       });
 
     if (!interaction.member.voice.channel) {
