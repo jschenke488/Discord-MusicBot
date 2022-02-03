@@ -22,8 +22,17 @@ class Server extends EventEmitter {
       });
 
     this.app = express();
+    
+    this.app.use(express.static(join(__dirname, "..", "assets")));
 
     //Stuff
+    this.app.get("/", (req, res) => {
+      res.sendFile(join(__dirname, "..", "views", "home.html"))
+    });
+    this.app.use(
+      "/dashboard",
+      require(join(__dirname, ".") + "/dashboard.js")
+    );
     fs.readdir(join(__dirname, "routes"), (err, files) => {
       if (err) return console.log(err);
       files.forEach((file) => {
