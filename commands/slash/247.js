@@ -31,6 +31,7 @@ const command = new SlashCommand()
     if (!player) {
       return interaction.reply({
         embeds: [client.ErrorEmbed("**There's nothing to play 24/7!**")],
+        ephemeral: true
       });
     } else if (player.twentyFourSeven) {
       player.twentyFourSeven = false;
