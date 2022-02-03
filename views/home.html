@@ -20,16 +20,10 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/fontawesome.min.css"
     />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="use.typekit.net" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap"
+      href="https://use.typekit.net/fkh1thh.css"
       rel="stylesheet"
-    />
-    <link
-      href="//db.onlinewebfonts.com/c/721c73bcd2e49f3a621991089838b503?family=Euclid+Circular+B+Medium"
-      rel="stylesheet"
-      type="text/css"
     />
   </head>
 
@@ -69,8 +63,9 @@
               width="30"
               height="30"
               class="d-inline-block align-text-top"
+			  style="margin-right:4px"
             />
-            Discord Music Bot
+            <span style="position:relative;bottom:1px">Discord Music Bot</span>
           </a>
           <button
             class="navbar-toggler"
@@ -89,19 +84,19 @@
                 class="nav-link active"
                 aria-current="page"
                 href="/"
-                style="color: white"
+                style="color: #4b3621"
                 >Home</a
               >
-              <a class="nav-link" href="#features" style="color: white"
+              <a class="nav-link" href="#features" style="color: #4b3621"
                 >Features</a
               >
-              <a class="nav-link" href="#commands" style="color: white"
+              <a class="nav-link" href="#commands" style="color: #4b3621"
                 >Commands</a
               >
+			  <a class="nav-link" href="#" style="color: #4b3621" id="dashboard-nav-btn">
+                Dashboard
+              </a>
             </div>
-            <a href="/dashboard" class="btn" type="button" style="color: white">
-              Dashboard
-            </a>
           </div>
           <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -132,6 +127,8 @@
             An advanced discord music bot, supports Spotify, SoundCloud, YouTube
             with Shuffling, Volume Control and Web Dashboard!
           </p>
+		  <a href="#" class="btn" type="button" style="background: rgba( 255, 255, 255, 0.35 );box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );backdrop-filter: blur( 9px );-webkit-backdrop-filter: blur( 9px );border-radius: 10px;border: 1px solid rgba( 255, 255, 255, 0.18 );" id="dashboard-btn">Dashboard</a>
+		  <a href="#" class="btn" type="button" style="background: rgba( 255, 255, 255, 0.35 );box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );backdrop-filter: blur( 9px );-webkit-backdrop-filter: blur( 9px );border-radius: 10px;border: 1px solid rgba( 255, 255, 255, 0.18 );" id="invite-btn">Invite</a>
         </div>
       </div>
       <!-- End Hero -->
@@ -140,7 +137,7 @@
       <div id="features" class="section-features">
         <div class="container">
           <div class="row justify-content-center text-center">
-            <div class="col-md-10 col-lg-8">
+            <div class="col-md-10 col-lg-8" style="width:100%">
               <div class="header-section">
                 <h2 class="title-features">Exclusive <span>Features</span></h2>
               </div>
@@ -197,7 +194,7 @@
       <!-- Commands -->
       <div class="commands" id="commands">
         <div class="container">
-          <h2 class="title text-center">Commands</h2>
+          <h2 class="title text-center" style="color:white;">Commands</h2>
           <table
             class="table"
             style="
@@ -213,12 +210,7 @@
                 <th
                   scope="col"
                   style="
-                    background: linear-gradient(
-                      to right,
-                      #8a2387,
-                      #e94057,
-                      #f27121
-                    );
+                    background: #fffaf0;
                     color: transparent;
                     -webkit-background-clip: text;
                     background-clip: text;
@@ -230,12 +222,7 @@
                 <th
                   scope="col"
                   style="
-                    background: linear-gradient(
-                      to right,
-                      #8a2387,
-                      #e94057,
-                      #f27121
-                    );
+                    background: #fffaf0;
                     color: transparent;
                     -webkit-background-clip: text;
                     background-clip: text;
@@ -247,12 +234,7 @@
                 <th
                   scope="col"
                   style="
-                    background: linear-gradient(
-                      to right,
-                      #8a2387,
-                      #e94057,
-                      #f27121
-                    );
+                    background: #fffaf0;
                     color: transparent;
                     -webkit-background-clip: text;
                     background-clip: text;
@@ -264,12 +246,7 @@
                 <th
                   scope="col"
                   style="
-                    background: linear-gradient(
-                      to right,
-                      #8a2387,
-                      #e94057,
-                      #f27121
-                    );
+                    background: #fffaf0;
                     color: transparent;
                     -webkit-background-clip: text;
                     background-clip: text;
@@ -317,25 +294,14 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   </body>
   <style>
-    @font-face {
-      font-family: "Euclid Circular B Medium";
-      src: url("//db.onlinewebfonts.com/t/721c73bcd2e49f3a621991089838b503.eot");
-      src: url("//db.onlinewebfonts.com/t/721c73bcd2e49f3a621991089838b503.eot?#iefix")
-          format("embedded-opentype"),
-        url("//db.onlinewebfonts.com/t/721c73bcd2e49f3a621991089838b503.woff2")
-          format("woff2"),
-        url("//db.onlinewebfonts.com/t/721c73bcd2e49f3a621991089838b503.woff")
-          format("woff"),
-        url("//db.onlinewebfonts.com/t/721c73bcd2e49f3a621991089838b503.ttf")
-          format("truetype"),
-        url("//db.onlinewebfonts.com/t/721c73bcd2e49f3a621991089838b503.svg#Euclid Circular B Medium")
-          format("svg");
-    }
-
     body {
-      background: linear-gradient(to right, #8a2387, #e94057, #f27121);
+      background: linear-gradient(45deg, #bb4430, #a755c2);
       color: #fff;
-      font-family: "Euclid Circular B Medium", Poppins;
+      font-family: "soleil", sans-serif;
+    }
+    
+    .btn {
+      color: #4b3621;
     }
 
     .navbar-toggler {
@@ -352,12 +318,26 @@
       padding-bottom: 120px;
     }
 
-    .commands .title {
+    .commands h2.title, .title-features {
       position: relative;
-      padding-bottom: 25px;
-      text-transform: uppercase;
+      padding-bottom: 15px;
+      border-bottom: 2px solid #fffaf0aa;
+	    margin-bottom: 25px;
       font-weight: 700;
       color: white;
+    }
+	
+    #commands thead th {
+      font-weight: bold;
+      font-size: 1.1em;
+    }
+
+    #commands-body tr th, #commands-body tr td {
+      font-weight: 300;
+    }
+
+    #commands-body tr:last-child th, #commands-body tr:last-child td {
+      border-bottom-width: 0;
     }
 
     @media only screen and (max-width: 630px) {
@@ -374,12 +354,6 @@
       margin-top: 100px;
     }
 
-    .title-features {
-      color: white;
-      text-transform: uppercase;
-      font-weight: 700;
-    }
-
     .section-features {
       padding-top: 110px;
       padding-bottom: 120px;
@@ -387,7 +361,7 @@
     }
 
     .title {
-      background: linear-gradient(to right, #8a2387, #e94057, #f27121);
+      background: #4b3621;
       color: transparent;
       -webkit-background-clip: text;
       background-clip: text;
@@ -414,7 +388,7 @@
       transform: translateX(-50%);
       width: 140px;
       height: 1px;
-      background-color: #f70037;
+      background-color: #f2f3f4;
     }
 
     .section-features .header-section .title:after {
@@ -425,11 +399,11 @@
       transform: translateX(-50%);
       width: 45px;
       height: 3px;
-      background-color: #f70037;
+      background-color: #f2f3f4;
     }
 
     .section-features .header-section .title span {
-      color: #f70037;
+      color: #f2f3f4;
     }
 
     .section-features .header-section .description {
@@ -448,13 +422,13 @@
 
     .section-features .single-service .part-1 {
       padding: 40px 40px 25px;
-      border-bottom: 2px solid #1d1e23;
+      border-bottom: 2px solid #fffaf0aa;
     }
 
     .section-features .single-service .part-1 i {
       margin-bottom: 25px;
       font-size: 50px;
-      color: #f70037;
+      color: #f2f3f4;
     }
 
     .section-features .single-service .part-1 .title {
@@ -483,7 +457,7 @@
 
     .section-features .single-service .part-2 a i {
       margin-right: 10px;
-      color: #f70037;
+      color: #f2f3f4;
     }
 
     .footer {
@@ -508,7 +482,7 @@
     }
 
     .footer p a {
-      background: linear-gradient(to right, #8a2387, #e94057, #f27121);
+      background: cornflowerblue;
       color: transparent;
       -webkit-background-clip: text;
       background-clip: text;
@@ -520,22 +494,33 @@
     }
   </style>
   <script>
+    function getState() {
+	  if (!localStorage.getItem("state")) {
+		  let randomString = '';
+		  const randomNumber = Math.floor(Math.random() * 10);
+
+		  for (let i = 0; i < 20 + randomNumber; i++) {
+			randomString += String.fromCharCode(33 + Math.floor(Math.random() * 94));
+		  }
+
+		  localStorage.setItem("state", randomString);
+	  }
+	  return localStorage.getItem("state");
+    }
+  
     $(document).ready(() => {
       $.get("/api/info", (data) => {
-        //check api/routes.js
-        let url = `https://discord.com/oauth2/authorize?client_id=${
+		let state = getState();
+		let dashboardURL = `/dashboard?state=${state}`;
+        let inviteURL = `https://discord.com/oauth2/authorize?client_id=${
           data.ClientID
         }&permissions=${data.Permissions}&scope=${data.Scopes.join(
           "%20"
-        )}&redirect_uri=${data.Website}${data.CallbackURL}&response_type=code`;
+        )}&redirect_uri=${data.Website}${data.CallbackURL}&response_type=code&state=${state}`;
 
-        $("#hero").append(`
-            <a href="/dashboard" class="btn" type="button" style="background: rgba( 255, 255, 255, 0.35 );
-box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-backdrop-filter: blur( 9px );
--webkit-backdrop-filter: blur( 9px );
-border-radius: 10px;
-border: 1px solid rgba( 255, 255, 255, 0.18 );">Dashboard</a>`);
+		$("#dashboard-nav-btn").attr("href", dashboardURL);
+		$("#dashboard-btn").attr("href", dashboardURL);
+		$("#invite-btn").attr("href", inviteURL);
       });
 
       $.get("/api/commands", (data) => {
