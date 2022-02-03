@@ -54,7 +54,7 @@ const command = new SlashCommand()
       let thing = new MessageEmbed()
         .setColor(client.config.embedColor)
         .setDescription("❌ | Invalid position!");
-      return interaction.editReply({ embeds: [thing] });
+      return interaction.editReply({ embeds: [thing], ephemeral: true });
     }
 
     player.queue.remove(0, position - 1);
