@@ -9,6 +9,7 @@ const command = new SlashCommand()
     if (!player) {
       return interaction.reply({
         embeds: [client.ErrorEmbed("There is no music playing")],
+        ephemeral: true
       });
     }
     if (!interaction.member.voice.channel) {
