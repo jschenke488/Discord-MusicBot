@@ -36,4 +36,6 @@ module.exports = {
   },
   iconURL:
     "https://github.com/SudhanPlayz/Discord-MusicBot/raw/master/assets/logo.gif", //This icon will be in every embed's author field
+  website: "http://www.example.com", // Replace with your website
+  callbackURL: "/api/callback", // Callback URL for authorization
 };
