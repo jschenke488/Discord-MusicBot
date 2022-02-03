@@ -9,6 +9,7 @@ const command = new SlashCommand()
     if (!player)
       return interaction.reply({
         embeds: [client.ErrorEmbed("**Nothing is playing right now...**")],
+        ephemeral: true
       });
 
     if (!interaction.member.voice.channel) {
