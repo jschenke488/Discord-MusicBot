@@ -10,6 +10,7 @@ const command = new SlashCommand()
     if (!player) {
       return interaction.reply({
         embeds: [client.ErrorEmbed("**There's nothing playing**")],
+        ephemeral: true
       });
       // check current playing song
     } else {
