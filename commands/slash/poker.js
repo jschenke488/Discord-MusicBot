@@ -1,11 +1,12 @@
 const SlashCommand = require("../../lib/SlashCommand");
 const { MessageEmbed } = require("discord.js");
 const fetch = require("node-fetch");
+const { InviteTargetType, RouteBases, Routes } = require('discord-api-types/v9');
 
 const command = new SlashCommand()
   .setName("poker")
   .setDescription("Starts a Poker session")
-  .setRun(async (client, interaction, options) => {
+  .setRun(async (client, interaction) => {
     if (!interaction.member.voice.channel) {
       const joinEmbed = new MessageEmbed()
         .setColor(client.config.embedColor)
@@ -28,43 +29,40 @@ const command = new SlashCommand()
     }
     let channel = await client.getChannel(client, interaction);
 
-    fetch(`https://discord.com/api/v9/channels/${channel.id}/invites`, {
+    const r = await fetch(`${RouteBases.api}${Routes.channelInvites(channel.id)}`, {
       method: "POST",
+      headers: { authorization: `Bot ${client.config.token}`, 'content-type': 'application/json' },
       body: JSON.stringify({
-        max_age: 86400,
-        max_uses: 0,
+        max_age: 0,
+        target_type: InviteTargetType.EmbeddedApplication,
         target_application_id: "755827207812677713",
-        target_type: 2,
-        temporary: false,
-        validate: null,
-      }),
-      headers: {
-        Authorization: `Bot ${client.config.token}`,
-        "Content-Type": "application/json",
-      },
-    }).then(async (res) => {
-      if (res.status !== 200) {
-        console.log(res.status);
-        return interaction.reply({
-          content: "There was an error creating the invite. Please try again later.",
-          ephemeral: true
-        });
-      }
-      const invite = await res.json();
-      const Embed = new MessageEmbed()
-        .setAuthor({
-          name: "Poker Night",
-          iconURL: "https://cdn.darrennathanael.com/assets/discord/poker.png",
-        })
-        //.setAuthor(`Poker Night`, "https://darrennathanael.com/cdn/poker.png")
+      })
+    })
+
+    const invite = await r.json();
+
+    if (r.status !== 200) {
+      console.log(r.status);
+      const statusEmbed = new MessageEmbed()
         .setColor(client.config.embedColor)
-        .setDescription(`Using **Poker Night** you can play Poker with your friends in a Voice Channel. Click *Join Poker Night* to join in!
+        .setDescription(
+          "There was an error creating the invite. Please try again later."
+        );
+      return interaction.reply({ embeds: [statusEmbed] });
+    }
+
+    const Embed = new MessageEmbed()
+      .setAuthor({
+        name: "Poker Night",
+        iconURL: "https://cdn.darrennathanael.com/assets/discord/poker.png",
+      })
+      .setColor(client.config.embedColor)
+      .setDescription(`Using **Poker Night** you can play Poker with your friends in a Voice Channel. Click *Join Poker Night* to join in!
       
-      __**[Join Poker Night](https://discord.com/invite/${invite.code})**__
+      __**[Join Poker Night](<https://discord.gg/${invite.code}>)**__
 
       ⚠ **Note:** This only works in Desktop`);
-      return interaction.reply({ embeds: [Embed] });
-    });
+    return interaction.reply({ embeds: [Embed] });
   });
 
 module.exports = command;

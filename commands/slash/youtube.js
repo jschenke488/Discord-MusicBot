@@ -1,12 +1,12 @@
 const SlashCommand = require("../../lib/SlashCommand");
 const { MessageEmbed } = require("discord.js");
 const fetch = require("node-fetch");
-const { InteractionType, InteractionResponseType, APIInteractionResponse, RESTPostAPIChannelInviteJSONBody, APIInvite, ApplicationCommandOptionType, ChannelType, MessageFlags, APIApplicationCommandInteraction, InviteTargetType, RouteBases, Routes } = require('discord-api-types/v9');
+const { InviteTargetType, RouteBases, Routes } = require('discord-api-types/v9');
 
 const command = new SlashCommand()
   .setName("youtube")
   .setDescription("Starts a Watch Together session")
-  .setRun(async (client, interaction, options) => {
+  .setRun(async (client, interaction) => {
     if (!interaction.member.voice.channel) {
       const joinEmbed = new MessageEmbed()
         .setColor(client.config.embedColor)
@@ -38,11 +38,11 @@ const command = new SlashCommand()
         target_application_id: "880218394199220334",
       })
     })
-    
+
     const invite = await r.json();
 
     if (r.status !== 200) {
-	    console.log(r.status);
+      console.log(r.status);
       const statusEmbed = new MessageEmbed()
         .setColor(client.config.embedColor)
         .setDescription(
@@ -50,7 +50,7 @@ const command = new SlashCommand()
         );
       return interaction.reply({ embeds: [statusEmbed] });
     }
-          
+
     const Embed = new MessageEmbed()
       .setAuthor({
         name: "Watch Together",
@@ -60,7 +60,7 @@ const command = new SlashCommand()
       .setDescription(`Using **Watch Together** you can watch YouTube with your friends in a Voice Channel. Click *Join Watch Together* to join in!
       
       __**[Join Watch Together](<https://discord.gg/${invite.code}>)**__
-      
+
       ⚠ **Note:** This only works in Desktop`);
     return interaction.reply({ embeds: [Embed] });
   });
