@@ -1,10 +1,11 @@
 const SlashCommand = require("../../lib/SlashCommand");
 const { MessageEmbed } = require("discord.js");
 const fetch = require("node-fetch");
+const { InteractionType, InteractionResponseType, APIInteractionResponse, RESTPostAPIChannelInviteJSONBody, APIInvite, ApplicationCommandOptionType, ChannelType, MessageFlags, APIApplicationCommandInteraction, InviteTargetType, RouteBases, Routes } = require('discord-api-types/v9');
 
 const command = new SlashCommand()
   .setName("youtube")
-  .setDescription("Starts a YouTube Together session")
+  .setDescription("Starts a Watch Together session")
   .setRun(async (client, interaction, options) => {
     if (!interaction.member.voice.channel) {
       const joinEmbed = new MessageEmbed()
@@ -28,42 +29,40 @@ const command = new SlashCommand()
     }
     let channel = await client.getChannel(client, interaction);
 
-    fetch(`https://discord.com/api/v9/channels/${channel.id}/invites`, {
+    const r = await fetch(`${RouteBases.api}${Routes.channelInvites(channel.id)}`, {
       method: "POST",
+      headers: { authorization: `Bot ${client.config.token}`, 'content-type': 'application/json' },
       body: JSON.stringify({
-        max_age: 86400,
-        max_uses: 0,
+        max_age: 0,
+        target_type: InviteTargetType.EmbeddedApplication,
         target_application_id: "880218394199220334",
-        target_type: 2,
-        temporary: false,
-        validate: null,
-      }),
-      headers: {
-        Authorization: `Bot ${client.config.token}`,
-        "Content-Type": "application/json",
-      },
-    }).then(async (res) => {
-      if (res.status !== 200) {
-        console.log(res.status);
-        return interaction.reply(
+      })
+    })
+    
+    const invite = await r.json();
+
+    if (r.status !== 200) {
+	    console.log(r.status);
+      const statusEmbed = new MessageEmbed()
+        .setColor(client.config.embedColor)
+        .setDescription(
           "There was an error creating the invite. Please try again later."
         );
-      }
-      const invite = await res.json();
-      const Embed = new MessageEmbed()
-        .setAuthor({
-          name: "YouTube Together",
-          iconURL: "https://cdn.darrennathanael.com/assets/discord/youtube.png",
-        })
-        //.setAuthor(`YouTube Together`, "https://darrennathanael.com/cdn/youtube.png")
-        .setColor(client.config.embedColor)
-        .setDescription(`Using **YouTube Together** you can watch YouTube with your friends in a Voice Channel. Click *Join YouTube Together* to join in!
+      return interaction.reply({ embeds: [statusEmbed] });
+    }
+          
+    const Embed = new MessageEmbed()
+      .setAuthor({
+        name: "Watch Together",
+        iconURL: "https://cdn.darrennathanael.com/assets/discord/youtube.png",
+      })
+      .setColor(client.config.embedColor)
+      .setDescription(`Using **Watch Together** you can watch YouTube with your friends in a Voice Channel. Click *Join Watch Together* to join in!
       
-      __**[Join YouTube Together](https://discord.com/invite/${invite.code})**__
-
+      __**[Join YouTube Together](<https://discord.gg/${invite.code}>)**__
+      
       ⚠ **Note:** This only works in Desktop`);
-      return interaction.reply({ embeds: [Embed] });
-    });
+    return interaction.reply({ embeds: [Embed] });
   });
 
 module.exports = command;
